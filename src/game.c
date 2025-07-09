@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "player.h"
+#include "raymath.h"
 
 Game *InitGame() {
     Game *game = malloc(sizeof(Game));
@@ -39,7 +40,10 @@ void UpdateGame(Game *game) {
 
         for (int i = 0; i < MAX_PROJECTILES; i++) {
             if (!game->projectiles[i]->active) {
-                ShootProjectile(game->projectiles[i], game->player->position,
+                ShootProjectile(game->projectiles[i],
+                                Vector2Add(game->player->position,
+                                           (Vector2){game->player->size.x / 2,
+                                                     game->player->size.y / 2}),
                                 (Vector2){0, -1});
 
                 break;

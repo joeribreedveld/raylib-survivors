@@ -11,8 +11,9 @@ static const int projectileLifetime = 3;
 typedef struct Projectile {
     Vector2 position;
     Vector2 velocity;
-    bool active;
+    Vector2 size;
     float lifetime;
+    bool active;
 } Projectile;
 
 Projectile *InitProjectile();

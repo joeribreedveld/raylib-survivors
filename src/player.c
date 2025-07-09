@@ -12,6 +12,8 @@ Player *InitPlayer() {
 
     player->velocity = Vector2Zero();
 
+    player->size = (Vector2){playerWidth, playerHeight};
+
     return player;
 }
 
@@ -28,8 +30,8 @@ void UpdatePlayer(Player *player) {
 }
 
 void DrawPlayer(Player *player) {
-    DrawRectangle((int)player->position.x, (int)player->position.y, playerWidth,
-                  playerHeight, WHITE);
+    DrawRectangle((int)player->position.x, (int)player->position.y,
+                  player->size.x, player->size.y, WHITE);
 }
 
 void UnloadPlayer(Player *player) { free(player); }

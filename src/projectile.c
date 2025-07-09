@@ -11,6 +11,7 @@ Projectile *InitProjectile() {
     projectile->velocity = Vector2Zero();
     projectile->position = Vector2Zero();
     projectile->active = false;
+    projectile->size = (Vector2){projectileWidth, projectileHeight};
 
     return projectile;
 }
@@ -32,16 +33,18 @@ void UpdateProjectile(Projectile *projectile) {
 void DrawProjectile(Projectile *projectile) {
     if (!projectile->active) return;
 
-    DrawRectangle(projectile->position.x, projectile->position.y,
-                  projectileWidth, projectileHeight, RED);
+    DrawRectangle(projectile->position.x - projectile->size.x / 2,
+                  projectile->position.y - projectile->size.y / 2,
+                  projectile->size.x, projectile->size.y, RED);
 }
 
 void ShootProjectile(Projectile *projectile, Vector2 position,
                      Vector2 direction) {
     projectile->active = true;
     projectile->position = position;
-    projectile->velocity = GetDeltaVelocity(direction, projectileSpeed);
     projectile->lifetime = projectileLifetime;
+
+    projectile->velocity = GetDeltaVelocity(direction, projectileSpeed);
 }
 
 void UnloadProjectile(Projectile *projectile) { free(projectile); }

@@ -10,6 +10,7 @@ static const int playerSpeed = 200;
 typedef struct Player {
     Vector2 position;
     Vector2 velocity;
+    Vector2 size;
 } Player;
 
 Player *InitPlayer();
