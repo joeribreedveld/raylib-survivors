@@ -20,6 +20,13 @@ void UpdateProjectile(Projectile *projectile) {
 
     projectile->position =
         Vector2Add(projectile->position, projectile->velocity);
+
+    /* Lifetime */
+    projectile->lifetime -= GetFrameTime();
+
+    if (projectile->lifetime <= 0) {
+        projectile->active = false;
+    }
 }
 
 void DrawProjectile(Projectile *projectile) {
@@ -34,6 +41,7 @@ void ShootProjectile(Projectile *projectile, Vector2 position,
     projectile->active = true;
     projectile->position = position;
     projectile->velocity = GetDeltaVelocity(direction, projectileSpeed);
+    projectile->lifetime = projectileLifetime;
 }
 
 void UnloadProjectile(Projectile *projectile) { free(projectile); }

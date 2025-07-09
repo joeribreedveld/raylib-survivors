@@ -6,6 +6,7 @@
 static const int projectileWidth = 8;
 static const int projectileHeight = 16;
 static const int projectileSpeed = 400;
+static const int projectileLifetime = 3;
 
 typedef struct Projectile {
     Vector2 position;
