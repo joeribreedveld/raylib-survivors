@@ -25,8 +25,8 @@ void UpdatePlayer(Player *player) {
     if (IsKeyDown(KEY_S)) direction.y += 1;
     if (IsKeyDown(KEY_D)) direction.x += 1;
 
-    player->position =
-        Vector2Add(player->position, GetDeltaVelocity(direction, playerSpeed));
+    player->position = Vector2Add(player->position,
+                                  Vector2DeltaVelocity(direction, playerSpeed));
 }
 
 void DrawPlayer(Player *player) {

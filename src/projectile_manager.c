@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "raymath.h"
+#include "utils.h"
 
 ProjectileManager *InitProjectileManager() {
     ProjectileManager *projectileManager = malloc(sizeof(ProjectileManager));
@@ -27,11 +28,11 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
 
         for (int i = 0; i < MAX_PROJECTILES; i++) {
             if (!projectileManager->projectiles[i].active) {
-                SetProjectile(
-                    &projectileManager->projectiles[i],
-                    Vector2Add(player->position, (Vector2){player->size.x / 2,
-                                                           player->size.y / 2}),
-                    (Vector2){0, -1});
+                SetProjectile(&projectileManager->projectiles[i],
+                              Vector2Add(player->position,
+                                         (Vector2){player->size.x / 2.0f,
+                                                   player->size.y / 2.0f}),
+                              Vector2RandomNormalized());
 
                 break;
             }

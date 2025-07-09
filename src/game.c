@@ -41,9 +41,9 @@ void DrawGame(Game *game) {
 
     DrawRectangle(10, 10, 100, 100, YELLOW);
 
-    DrawPlayer(game->player);
-
     DrawProjectileManager(game->projectileManager);
+
+    DrawPlayer(game->player);
 
     EndMode2D();
 

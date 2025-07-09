@@ -3,8 +3,8 @@
 
 #include "raylib.h"
 
-static const int projectileWidth = 8;
-static const int projectileHeight = 16;
+static const int projectileWidth = 16;
+static const int projectileHeight = 8;
 static const int projectileSpeed = 400;
 static const int projectileLifetime = 3;
 
