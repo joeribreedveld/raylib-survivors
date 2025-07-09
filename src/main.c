@@ -1,8 +1,8 @@
-#include <stdlib.h>
-
 #include "player.h"
 #include "projectile.h"
 #include "raylib.h"
+
+#define MAX_PROJECTILES 50
 
 int main() {
     /* Init */
@@ -23,7 +23,11 @@ int main() {
     camera.offset = (Vector2){(GetScreenWidth() - playerWidth) / 2.0f,
                               (GetScreenHeight() - playerHeight) / 2.0f};
 
-    Projectile *projectile = InitProjectile(player->position);
+    Projectile *projectiles[MAX_PROJECTILES];
+
+    for (int i = 0; i < MAX_PROJECTILES; i++) {
+        projectiles[i] = InitProjectile();
+    }
 
     while (!WindowShouldClose()) {
         /* Update */
@@ -34,11 +38,19 @@ int main() {
 
         /* Projectile */
         if (IsKeyPressed(KEY_SPACE)) {
-            free(projectile);
-            projectile = InitProjectile(player->position);
+            for (int i = 0; i < MAX_PROJECTILES; i++) {
+                if (!projectiles[i]->active) {
+                    ShootProjectile(projectiles[i], player->position,
+                                    (Vector2){0, -1});
+
+                    break;
+                }
+            }
         }
 
-        UpdateProjectile(projectile);
+        for (int i = 0; i < MAX_PROJECTILES; i++) {
+            UpdateProjectile(projectiles[i]);
+        }
 
         /* Draw */
         BeginDrawing();
@@ -52,7 +64,9 @@ int main() {
 
         DrawRectangle(10, 10, 100, 100, YELLOW);
 
-        DrawProjectile(projectile);
+        for (int i = 0; i < MAX_PROJECTILES; i++) {
+            DrawProjectile(projectiles[i]);
+        }
 
         EndMode2D();
 
@@ -62,7 +76,9 @@ int main() {
     /* DeInit */
     UnloadPlayer(player);
 
-    UnloadProjectile(projectile);
+    for (int i = 0; i < MAX_PROJECTILES; i++) {
+        UnloadProjectile(projectiles[i]);
+    }
 
     CloseWindow();
 

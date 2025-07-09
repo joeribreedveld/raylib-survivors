@@ -10,13 +10,18 @@ static const int projectileSpeed = 400;
 typedef struct Projectile {
     Vector2 position;
     Vector2 velocity;
+    bool active;
+    float lifetime;
 } Projectile;
 
-Projectile *InitProjectile(Vector2 position);
+Projectile *InitProjectile();
 
 void UpdateProjectile(Projectile *projectile);
 
 void DrawProjectile(Projectile *projectile);
+
+void ShootProjectile(Projectile *projectile, Vector2 position,
+                     Vector2 velocity);
 
 void UnloadProjectile(Projectile *projectile);
 
