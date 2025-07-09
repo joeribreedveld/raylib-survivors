@@ -1,4 +1,7 @@
+#include <stdlib.h>
+
 #include "player.h"
+#include "projectile.h"
 #include "raylib.h"
 
 int main() {
@@ -15,10 +18,12 @@ int main() {
     /* Camera */
     Camera2D camera = {0};
     camera.target = (Vector2){player->position.x, player->position.y};
-    camera.rotation = 0.0f;
     camera.zoom = 1.0f;
-    camera.offset =
-        (Vector2){GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
+
+    camera.offset = (Vector2){(GetScreenWidth() - playerWidth) / 2.0f,
+                              (GetScreenHeight() - playerHeight) / 2.0f};
+
+    Projectile *projectile = InitProjectile(player->position);
 
     while (!WindowShouldClose()) {
         /* Update */
@@ -26,6 +31,14 @@ int main() {
 
         camera.target =
             (Vector2){(int)player->position.x, (int)player->position.y};
+
+        /* Projectile */
+        if (IsKeyPressed(KEY_SPACE)) {
+            free(projectile);
+            projectile = InitProjectile(player->position);
+        }
+
+        UpdateProjectile(projectile);
 
         /* Draw */
         BeginDrawing();
@@ -39,6 +52,8 @@ int main() {
 
         DrawRectangle(10, 10, 100, 100, YELLOW);
 
+        DrawProjectile(projectile);
+
         EndMode2D();
 
         EndDrawing();
@@ -46,6 +61,8 @@ int main() {
 
     /* DeInit */
     UnloadPlayer(player);
+
+    UnloadProjectile(projectile);
 
     CloseWindow();
 
