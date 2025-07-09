@@ -3,10 +3,8 @@
 
 #include "raylib.h"
 
-Vector2 Vector2DeltaVelocity(Vector2 direction, int speed);
+float GetRandomDirection();
 
-Vector2 Vector2RandomNormalized();
-
-float Vector2AngleValue(Vector2 vector);
+Rectangle RectangleFromTopLeft(Vector2 position, Vector2 size);
 
 #endif

@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #include "raymath.h"
-#include "utils.h"
 
 Player *InitPlayer() {
     Player *player = malloc(sizeof(Player));
@@ -29,8 +28,9 @@ void UpdatePlayer(Player *player) {
         direction = Vector2Normalize(direction);
     }
 
-    player->position = Vector2Add(player->position,
-                                  Vector2DeltaVelocity(direction, playerSpeed));
+    player->position =
+        Vector2Add(player->position,
+                   Vector2Scale(direction, playerSpeed * GetFrameTime()));
 }
 
 void DrawPlayer(Player *player) {

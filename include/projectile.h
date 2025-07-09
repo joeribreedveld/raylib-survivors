@@ -23,6 +23,6 @@ void UpdateProjectile(Projectile *projectile);
 
 void DrawProjectile(Projectile *projectile);
 
-void SetProjectile(Projectile *projectile, Vector2 position, Vector2 velocity);
+void SetProjectile(Projectile *projectile, Vector2 position, float angle);
 
 #endif

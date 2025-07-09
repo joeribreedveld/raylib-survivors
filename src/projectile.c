@@ -15,9 +15,9 @@ void InitProjectile(Projectile *projectile) {
 
 void UpdateProjectile(Projectile *projectile) {
     projectile->position =
-        Vector2Add(projectile->position, projectile->velocity);
+        Vector2Add(projectile->position,
+                   Vector2Scale(projectile->velocity, GetFrameTime()));
 
-    /* Lifetime */
     projectile->lifetime -= GetFrameTime();
 
     if (projectile->lifetime <= 0) {
@@ -27,18 +27,17 @@ void UpdateProjectile(Projectile *projectile) {
 
 void DrawProjectile(Projectile *projectile) {
     DrawRectanglePro(
-        (Rectangle){(int)projectile->position.x, (int)projectile->position.y,
-                    projectile->size.x, projectile->size.y},
+        RectangleFromTopLeft(projectile->position, projectile->size),
         (Vector2){projectile->size.x / 2.0f, projectile->size.y / 2.0f},
-        projectile->angle, RED);
+        projectile->angle * RAD2DEG, RED);
 }
 
-void SetProjectile(Projectile *projectile, Vector2 position,
-                   Vector2 direction) {
+void SetProjectile(Projectile *projectile, Vector2 position, float angle) {
     projectile->active = true;
     projectile->position = position;
     projectile->lifetime = projectileLifetime;
 
-    projectile->velocity = Vector2DeltaVelocity(direction, projectileSpeed);
-    projectile->angle = Vector2AngleValue(projectile->velocity);
+    projectile->velocity =
+        Vector2Scale(Vector2Rotate((Vector2){1, 0}, angle), projectileSpeed);
+    projectile->angle = angle;
 }

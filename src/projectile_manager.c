@@ -32,7 +32,7 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
                               Vector2Add(player->position,
                                          (Vector2){player->size.x / 2.0f,
                                                    player->size.y / 2.0f}),
-                              Vector2RandomNormalized());
+                              GetRandomDirection());
 
                 break;
             }
