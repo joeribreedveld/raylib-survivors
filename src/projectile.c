@@ -5,15 +5,11 @@
 #include "raymath.h"
 #include "utils.h"
 
-Projectile *InitProjectile() {
-    Projectile *projectile = malloc(sizeof(Projectile));
-
+void InitProjectile(Projectile *projectile) {
     projectile->velocity = Vector2Zero();
     projectile->position = Vector2Zero();
     projectile->active = false;
     projectile->size = (Vector2){projectileWidth, projectileHeight};
-
-    return projectile;
 }
 
 void UpdateProjectile(Projectile *projectile) {
@@ -38,13 +34,11 @@ void DrawProjectile(Projectile *projectile) {
                   projectile->size.x, projectile->size.y, RED);
 }
 
-void ShootProjectile(Projectile *projectile, Vector2 position,
-                     Vector2 direction) {
+void SetProjectile(Projectile *projectile, Vector2 position,
+                   Vector2 direction) {
     projectile->active = true;
     projectile->position = position;
     projectile->lifetime = projectileLifetime;
 
     projectile->velocity = GetDeltaVelocity(direction, projectileSpeed);
 }
-
-void UnloadProjectile(Projectile *projectile) { free(projectile); }

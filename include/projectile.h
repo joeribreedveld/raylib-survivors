@@ -16,15 +16,12 @@ typedef struct Projectile {
     bool active;
 } Projectile;
 
-Projectile *InitProjectile();
+void InitProjectile(Projectile *projectile);
 
 void UpdateProjectile(Projectile *projectile);
 
 void DrawProjectile(Projectile *projectile);
 
-void ShootProjectile(Projectile *projectile, Vector2 position,
-                     Vector2 velocity);
-
-void UnloadProjectile(Projectile *projectile);
+void SetProjectile(Projectile *projectile, Vector2 position, Vector2 velocity);
 
 #endif
