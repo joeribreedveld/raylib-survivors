@@ -8,8 +8,7 @@
 Player *InitPlayer() {
     Player *player = malloc(sizeof(Player));
 
-    player->position = (Vector2){(GetScreenWidth() - playerWidth) / 2.0f,
-                                 (GetScreenHeight() - playerHeight) / 2.0f};
+    player->position = Vector2Zero();
 
     player->velocity = Vector2Zero();
 
@@ -29,7 +28,7 @@ void UpdatePlayer(Player *player) {
 }
 
 void DrawPlayer(Player *player) {
-    DrawRectangle(player->position.x, player->position.y, playerWidth,
+    DrawRectangle((int)player->position.x, (int)player->position.y, playerWidth,
                   playerHeight, WHITE);
 }
 
