@@ -13,6 +13,7 @@ typedef struct Projectile {
     Vector2 velocity;
     Vector2 size;
     float lifetime;
+    float angle;
     bool active;
 } Projectile;
 

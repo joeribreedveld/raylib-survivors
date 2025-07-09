@@ -40,13 +40,17 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
     }
 
     for (int i = 0; i < MAX_PROJECTILES; i++) {
-        UpdateProjectile(&projectileManager->projectiles[i]);
+        if (projectileManager->projectiles[i].active) {
+            UpdateProjectile(&projectileManager->projectiles[i]);
+        }
     }
 }
 
 void DrawProjectileManager(ProjectileManager *projectileManager) {
     for (int i = 0; i < MAX_PROJECTILES; i++) {
-        DrawProjectile(&projectileManager->projectiles[i]);
+        if (projectileManager->projectiles[i].active) {
+            DrawProjectile(&projectileManager->projectiles[i]);
+        }
     }
 }
 
