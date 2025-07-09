@@ -24,12 +24,12 @@ Game *InitGame() {
 }
 
 void UpdateGame(Game *game) {
-    game->camera.target =
-        (Vector2){(int)game->player->position.x, (int)game->player->position.y};
-
     UpdatePlayer(game->player);
 
     UpdateProjectileManager(game->projectileManager, game->player);
+
+    game->camera.target =
+        (Vector2){(int)game->player->position.x, (int)game->player->position.y};
 }
 
 void DrawGame(Game *game) {
@@ -41,9 +41,9 @@ void DrawGame(Game *game) {
 
     DrawRectangle(10, 10, 100, 100, YELLOW);
 
-    DrawProjectileManager(game->projectileManager);
-
     DrawPlayer(game->player);
+
+    DrawProjectileManager(game->projectileManager);
 
     EndMode2D();
 
