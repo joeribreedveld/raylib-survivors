@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 
+#include "game.h"
 #include "raymath.h"
 #include "utils.h"
 
@@ -25,13 +26,17 @@ void UpdateProjectile(Projectile *projectile) {
     }
 }
 
-void DrawProjectile(Projectile *projectile) {
-    Rectangle rect = {projectile->position.x, projectile->position.y,
-                      projectile->size.x, projectile->size.y};
+void DrawProjectile(Projectile *projectile, Game *game) {
+    Rectangle dest = {projectile->position.x, projectile->position.y,
+                      projectile->size.x * gameScale,
+                      projectile->size.y * gameScale};
 
-    Vector2 origin = {projectile->size.x / 2.0f, projectile->size.y / 2.0f};
+    Vector2 origin = {(dest.width / 2.0f), (dest.height / 2.0f)};
 
-    DrawRectanglePro(rect, origin, projectile->angle * RAD2DEG, RED);
+    float rotation = Vector2AngleValue(projectile->velocity) * RAD2DEG + 90.0f;
+
+    DrawTexturePro(game->tileset, game->projectileManager->sourceRect, dest,
+                   origin, rotation, WHITE);
 }
 
 void SetProjectile(Projectile *projectile, Vector2 position,

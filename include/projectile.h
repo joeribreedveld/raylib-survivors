@@ -3,9 +3,11 @@
 
 #include "raylib.h"
 
-static const int projectileWidth = 8;
-static const int projectileHeight = 8;
-static const int projectileSpeed = 400;
+typedef struct Game Game;
+
+static const int projectileWidth = 16;
+static const int projectileHeight = 16;
+static const int projectileSpeed = 250;
 static const int projectileLifetime = 3;
 
 typedef struct Projectile {
@@ -21,7 +23,7 @@ void InitProjectile(Projectile *projectile);
 
 void UpdateProjectile(Projectile *projectile);
 
-void DrawProjectile(Projectile *projectile);
+void DrawProjectile(Projectile *projectile, Game *game);
 
 void SetProjectile(Projectile *projectile, Vector2 position, Vector2 direction);
 

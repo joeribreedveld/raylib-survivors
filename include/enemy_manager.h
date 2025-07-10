@@ -12,6 +12,7 @@ struct Game;
 
 typedef struct EnemyManager {
     Enemy enemies[MAX_ENEMIES];
+    Rectangle sourceRect;
     float spawnTimer;
 } EnemyManager;
 
@@ -19,7 +20,7 @@ EnemyManager *InitEnemyManager();
 
 void UpdateEnemyManager(EnemyManager *enemyManager, Player *player);
 
-void DrawEnemyManager(EnemyManager *enemyManager);
+void DrawEnemyManager(Game *game);
 
 void UnloadEnemyManager(EnemyManager *enemyManager);
 

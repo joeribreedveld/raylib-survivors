@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 
+#include "game.h"
 #include "raymath.h"
 
 Player *InitPlayer() {
@@ -33,11 +34,17 @@ void UpdatePlayer(Player *player) {
                    Vector2Scale(direction, playerSpeed * GetFrameTime()));
 }
 
-void DrawPlayer(Player *player) {
-    Rectangle rect = {(int)player->position.x, (int)player->position.y,
-                      player->size.x, player->size.y};
-    Vector2 origin = {player->size.x / 2.0f, player->size.y / 2.0f};
-    DrawRectanglePro(rect, origin, 0.0f, WHITE);
+void DrawPlayer(Game *game) {
+    Rectangle dest = {
+        (int)game->player->position.x, (int)game->player->position.y,
+        game->player->size.x * gameScale, game->player->size.y * gameScale};
+
+    Vector2 origin = {(dest.width / 2.0f), (dest.height / 2.0f)};
+
+    float rotation = 0.0f;
+
+    DrawTexturePro(game->tileset, game->player->sourceRect, dest, origin,
+                   rotation, WHITE);
 }
 
 void UnloadPlayer(Player *player) { free(player); }

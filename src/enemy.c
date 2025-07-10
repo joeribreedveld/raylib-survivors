@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 
+#include "game.h"
 #include "raymath.h"
 
 void InitEnemy(Enemy *enemy) {
@@ -25,13 +26,16 @@ void UpdateEnemy(Enemy *enemy, Player *player) {
                                  Vector2Scale(enemy->velocity, GetFrameTime()));
 }
 
-void DrawEnemy(Enemy *enemy) {
-    Rectangle rectangle = {enemy->position.x, enemy->position.y, enemy->size.x,
-                           enemy->size.y};
+void DrawEnemy(Enemy *enemy, Game *game) {
+    Rectangle dest = {enemy->position.x, enemy->position.y,
+                      enemy->size.x * gameScale, enemy->size.y * gameScale};
 
-    Vector2 origin = {enemy->size.x / 2.0f, enemy->size.y / 2.0f};
+    Vector2 origin = {(dest.width / 2.0f), (dest.height / 2.0f)};
 
-    DrawRectanglePro(rectangle, origin, 0.0f, GREEN);
+    float rotation = 0.0f;
+
+    DrawTexturePro(game->tileset, game->enemyManager->sourceRect, dest, origin,
+                   rotation, WHITE);
 }
 
 void SetEnemy(Enemy *enemy, Vector2 position) {

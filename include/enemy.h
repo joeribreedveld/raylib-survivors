@@ -21,7 +21,7 @@ void InitEnemy(Enemy *enemy);
 
 void UpdateEnemy(Enemy *enemy, Player *player);
 
-void DrawEnemy(Enemy *enemy);
+void DrawEnemy(Enemy *enemy, Game *game);
 
 void SetEnemy(Enemy *enemy, Vector2 position);
 

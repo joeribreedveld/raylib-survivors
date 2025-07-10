@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 
+#include "game.h"
 #include "raymath.h"
 #include "utils.h"
 
@@ -51,10 +52,10 @@ void UpdateEnemyManager(EnemyManager *enemyManager, Player *player) {
     }
 }
 
-void DrawEnemyManager(EnemyManager *enemyManager) {
+void DrawEnemyManager(Game *game) {
     for (int i = 0; i < MAX_ENEMIES; i++) {
-        if (enemyManager->enemies[i].active) {
-            DrawEnemy(&enemyManager->enemies[i]);
+        if (game->enemyManager->enemies[i].active) {
+            DrawEnemy(&game->enemyManager->enemies[i], game);
         }
     }
 }

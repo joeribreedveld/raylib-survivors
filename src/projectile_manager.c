@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "enemy_manager.h"
+#include "game.h"
 #include "raymath.h"
 
 ProjectileManager *InitProjectileManager() {
@@ -29,7 +30,7 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
 
         /* Find nearest enemy */
         Enemy *enemy = NULL;
-        float closestDistance = enemySpawnRadius * enemySpawnRadius;
+        float closestDistance = projectileViewRadius * projectileViewRadius;
 
         for (int i = 0; i < MAX_ENEMIES; i++) {
             if (!enemyManager->enemies[i].active) continue;
@@ -37,7 +38,8 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
             float distance = Vector2DistanceSqr(
                 player->position, enemyManager->enemies[i].position);
 
-            if (distance < closestDistance) {
+            if (distance < closestDistance &&
+                distance <= projectileViewRadius * projectileViewRadius) {
                 closestDistance = distance;
                 enemy = &enemyManager->enemies[i];
             }
@@ -65,10 +67,10 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
     }
 }
 
-void DrawProjectileManager(ProjectileManager *projectileManager) {
+void DrawProjectileManager(Game *game) {
     for (int i = 0; i < MAX_PROJECTILES; i++) {
-        if (projectileManager->projectiles[i].active) {
-            DrawProjectile(&projectileManager->projectiles[i]);
+        if (game->projectileManager->projectiles[i].active) {
+            DrawProjectile(&game->projectileManager->projectiles[i], game);
         }
     }
 }
