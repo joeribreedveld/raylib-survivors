@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "enemy_manager.h"
 #include "player.h"
 #include "projectile_manager.h"
 #include "raylib.h"
@@ -9,6 +10,7 @@ typedef struct Game {
     Camera2D camera;
     Player *player;
     ProjectileManager *projectileManager;
+    EnemyManager *enemyManager;
 } Game;
 
 Game *InitGame();
