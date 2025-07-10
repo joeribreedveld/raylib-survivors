@@ -2,9 +2,7 @@
 
 #include <stdlib.h>
 
-#include "game.h"
 #include "raymath.h"
-#include "utils.h"
 
 Player *InitPlayer() {
     Player *player = malloc(sizeof(Player));

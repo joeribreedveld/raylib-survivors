@@ -9,6 +9,7 @@ static const int projectileWidth = 8;
 static const int projectileHeight = 16;
 static const int projectileSpeed = 750;
 static const int projectileLifetime = 3;
+static const int projectilePiercing = 2;
 
 typedef struct Projectile {
     Vector2 position;
@@ -17,6 +18,7 @@ typedef struct Projectile {
     float lifetime;
     float angle;
     bool active;
+    int piercing;
 } Projectile;
 
 void InitProjectile(Projectile *projectile);

@@ -6,6 +6,7 @@
 
 #include "enemy_manager.h"
 #include "game.h"
+#include "projectile.h"
 #include "raymath.h"
 
 ProjectileManager *InitProjectileManager() {
@@ -61,6 +62,11 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
     }
 
     for (int i = 0; i < MAX_PROJECTILES; i++) {
+        if (projectileManager->projectiles[i].piercing <= 0) {
+            projectileManager->projectiles[i].active = false;
+            projectileManager->projectiles[i].piercing = projectilePiercing;
+        }
+
         if (projectileManager->projectiles[i].active) {
             UpdateProjectile(&projectileManager->projectiles[i]);
         }

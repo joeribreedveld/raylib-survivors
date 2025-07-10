@@ -12,6 +12,7 @@ void InitProjectile(Projectile *projectile) {
     projectile->active = false;
     projectile->size = (Vector2){projectileWidth, projectileHeight};
     projectile->angle = 0.0f;
+    projectile->piercing = projectilePiercing;
 }
 
 void UpdateProjectile(Projectile *projectile) {

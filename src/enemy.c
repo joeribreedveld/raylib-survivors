@@ -2,9 +2,7 @@
 
 #include <stdlib.h>
 
-#include "game.h"
 #include "raymath.h"
-#include "utils.h"
 
 void InitEnemy(Enemy *enemy) {
     enemy->velocity = Vector2Zero();

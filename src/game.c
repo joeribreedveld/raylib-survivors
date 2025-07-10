@@ -49,7 +49,8 @@ void UpdateGame(Game *game) {
                         game->projectileManager->projectiles[j].position,
                         game->projectileManager->projectiles[j].size))) {
                 game->enemyManager->enemies[i].hp -= 1;
-                game->projectileManager->projectiles[j].active = false;
+
+                game->projectileManager->projectiles[j].piercing -= 1;
             }
         }
     }
