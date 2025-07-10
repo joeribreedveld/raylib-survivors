@@ -26,10 +26,12 @@ void UpdateProjectile(Projectile *projectile) {
 }
 
 void DrawProjectile(Projectile *projectile) {
-    DrawRectanglePro(
-        RectangleFromTopLeft(projectile->position, projectile->size),
-        (Vector2){projectile->size.x / 2.0f, projectile->size.y / 2.0f},
-        projectile->angle * RAD2DEG, RED);
+    Rectangle rect = {projectile->position.x, projectile->position.y,
+                      projectile->size.x, projectile->size.y};
+
+    Vector2 origin = {projectile->size.x / 2.0f, projectile->size.y / 2.0f};
+
+    DrawRectanglePro(rect, origin, projectile->angle * RAD2DEG, RED);
 }
 
 void SetProjectile(Projectile *projectile, Vector2 position,

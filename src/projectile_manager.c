@@ -49,12 +49,8 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
 
             for (int i = 0; i < MAX_PROJECTILES; i++) {
                 if (!projectileManager->projectiles[i].active) {
-                    Vector2 playerCenter = Vector2Add(
-                        player->position, (Vector2){player->size.x / 2.0f,
-                                                    player->size.y / 2.0f});
-
                     SetProjectile(&projectileManager->projectiles[i],
-                                  playerCenter, direction);
+                                  player->position, direction);
 
                     break;
                 }

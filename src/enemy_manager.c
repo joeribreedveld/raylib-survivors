@@ -27,11 +27,6 @@ void UpdateEnemyManager(EnemyManager *enemyManager, Player *player) {
 
         for (int i = 0; i < MAX_ENEMIES; i++) {
             if (!enemyManager->enemies[i].active) {
-                /* Enemy origin middle of player */
-                Vector2 playerCenter = Vector2Add(
-                    player->position,
-                    (Vector2){player->size.x / 2.0f, player->size.y / 2.0f});
-
                 /* Random position on spawn radius */
                 /* TODO: Enemy direction still same 16 as projectile movement */
                 Vector2 enemyOffset = Vector2Scale(
@@ -39,7 +34,7 @@ void UpdateEnemyManager(EnemyManager *enemyManager, Player *player) {
                     enemySpawnRadius);
 
                 SetEnemy(&enemyManager->enemies[i],
-                         Vector2Add(playerCenter, enemyOffset));
+                         Vector2Add(player->position, enemyOffset));
 
                 break;
             }

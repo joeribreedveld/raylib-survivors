@@ -26,8 +26,12 @@ void UpdateEnemy(Enemy *enemy, Player *player) {
 }
 
 void DrawEnemy(Enemy *enemy) {
-    DrawRectangle(enemy->position.x, enemy->position.y, enemy->size.x,
-                  enemy->size.y, GREEN);
+    Rectangle rectangle = {enemy->position.x, enemy->position.y, enemy->size.x,
+                           enemy->size.y};
+
+    Vector2 origin = {enemy->size.x / 2.0f, enemy->size.y / 2.0f};
+
+    DrawRectanglePro(rectangle, origin, 0.0f, GREEN);
 }
 
 void SetEnemy(Enemy *enemy, Vector2 position) {
