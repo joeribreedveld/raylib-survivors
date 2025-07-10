@@ -12,7 +12,7 @@ Game *InitGame() {
 
     game->projectileManager = InitProjectileManager();
 
-    game->camera.zoom = 1;
+    game->camera.zoom = 1.0f;
 
     game->camera.offset = (Vector2){(GetScreenWidth() - playerWidth) / 2.0f,
                                     (GetScreenHeight() - playerHeight) / 2.0f};

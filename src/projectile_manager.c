@@ -10,7 +10,7 @@
 ProjectileManager *InitProjectileManager() {
     ProjectileManager *projectileManager = malloc(sizeof(ProjectileManager));
 
-    projectileManager->shootTimer = 0;
+    projectileManager->shootTimer = 0.0f;
 
     for (int i = 0; i < MAX_PROJECTILES; i++) {
         InitProjectile(&projectileManager->projectiles[i]);
@@ -24,7 +24,7 @@ void UpdateProjectileManager(ProjectileManager *projectileManager,
     projectileManager->shootTimer += GetFrameTime();
 
     if (projectileManager->shootTimer >= shootInterval) {
-        projectileManager->shootTimer = 0;
+        projectileManager->shootTimer = 0.0f;
 
         for (int i = 0; i < MAX_PROJECTILES; i++) {
             if (!projectileManager->projectiles[i].active) {

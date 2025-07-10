@@ -10,7 +10,7 @@ void InitProjectile(Projectile *projectile) {
     projectile->position = Vector2Zero();
     projectile->active = false;
     projectile->size = (Vector2){projectileWidth, projectileHeight};
-    projectile->angle = 0;
+    projectile->angle = 0.0f;
 }
 
 void UpdateProjectile(Projectile *projectile) {
