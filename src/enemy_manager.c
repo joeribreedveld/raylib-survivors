@@ -55,7 +55,7 @@ void UpdateEnemyManager(EnemyManager *enemyManager, Player *player) {
 void DrawEnemyManager(Game *game) {
     for (int i = 0; i < MAX_ENEMIES; i++) {
         if (game->enemyManager->enemies[i].active) {
-            DrawEnemy(&game->enemyManager->enemies[i], game);
+            DrawEnemy(&game->enemyManager->enemies[i]);
         }
     }
 }

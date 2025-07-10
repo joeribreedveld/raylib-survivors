@@ -21,16 +21,6 @@ Game *InitGame() {
     game->camera.target =
         (Vector2){game->player->position.x, game->player->position.y};
 
-    game->tileset = LoadTexture("assets/tileset.png");
-
-    game->player->sourceRect = (Rectangle){112, 112, 16, 16};
-
-    game->enemyManager->sourceRect = (Rectangle){48, 112, 16, 16};
-
-    game->projectileManager->sourceRect = (Rectangle){64, 112, 16, 16};
-
-    game->flagSourceRect = (Rectangle){32, 80, 16, 16};
-
     return game;
 }
 
@@ -72,21 +62,13 @@ void DrawGame(Game *game) {
 
     BeginMode2D(game->camera);
 
-    /* Draw a flag on origin */
-    Rectangle dest = {0, 0, 16 * gameScale, 16 * gameScale};
-
-    Vector2 origin = {(dest.width / 2.0f), (dest.height / 2.0f)};
-
-    float rotation = 0.0f;
-
-    DrawTexturePro(game->tileset, game->flagSourceRect, dest, origin, rotation,
-                   WHITE);
+    DrawRectangle(0, 0, 100, 100, PINK);
 
     DrawProjectileManager(game);
 
     DrawEnemyManager(game);
 
-    DrawPlayer(game);
+    DrawPlayer(game->player);
 
     EndMode2D();
 
@@ -99,8 +81,6 @@ void UnloadGame(Game *game) {
     UnloadProjectileManager(game->projectileManager);
 
     UnloadEnemyManager(game->enemyManager);
-
-    UnloadTexture(game->tileset);
 
     free(game);
 }

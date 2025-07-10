@@ -5,14 +5,13 @@
 
 #define MAX_ENEMIES 200
 
-static const float enemySpawnInterval = 0.5f;
+static const float enemySpawnInterval = 0.35f;
 static const int enemySpawnRadius = 400;
 
 struct Game;
 
 typedef struct EnemyManager {
     Enemy enemies[MAX_ENEMIES];
-    Rectangle sourceRect;
     float spawnTimer;
 } EnemyManager;
 

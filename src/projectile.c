@@ -27,16 +27,14 @@ void UpdateProjectile(Projectile *projectile) {
 }
 
 void DrawProjectile(Projectile *projectile, Game *game) {
-    Rectangle dest = {projectile->position.x, projectile->position.y,
-                      projectile->size.x * gameScale,
-                      projectile->size.y * gameScale};
+    float rotation = projectile->angle * RAD2DEG + 90.0f;
 
-    Vector2 origin = {(dest.width / 2.0f), (dest.height / 2.0f)};
+    Rectangle rectangle = {projectile->position.x, projectile->position.y,
+                           projectile->size.x, projectile->size.y};
 
-    float rotation = Vector2AngleValue(projectile->velocity) * RAD2DEG + 90.0f;
+    Vector2 origin = {projectile->size.x / 2.0f, projectile->size.y / 2.0f};
 
-    DrawTexturePro(game->tileset, game->projectileManager->sourceRect, dest,
-                   origin, rotation, WHITE);
+    DrawRectanglePro(rectangle, origin, rotation, RED);
 }
 
 void SetProjectile(Projectile *projectile, Vector2 position,
@@ -46,4 +44,5 @@ void SetProjectile(Projectile *projectile, Vector2 position,
     projectile->lifetime = projectileLifetime;
 
     projectile->velocity = Vector2Scale(direction, projectileSpeed);
+    projectile->angle = Vector2AngleValue(direction);
 }

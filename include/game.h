@@ -13,8 +13,6 @@ typedef struct Game {
     Player *player;
     ProjectileManager *projectileManager;
     EnemyManager *enemyManager;
-    Texture2D tileset;
-    Rectangle flagSourceRect;
 } Game;
 
 Game *InitGame();
