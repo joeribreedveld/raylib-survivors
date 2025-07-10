@@ -34,8 +34,8 @@ void UpdatePlayer(Player *player) {
 }
 
 void DrawPlayer(Player *player) {
-    Rectangle rect = {player->position.x, player->position.y, player->size.x,
-                      player->size.y};
+    Rectangle rect = {(int)player->position.x, (int)player->position.y,
+                      player->size.x, player->size.y};
     Vector2 origin = {player->size.x / 2.0f, player->size.y / 2.0f};
     DrawRectanglePro(rect, origin, 0.0f, WHITE);
 }

@@ -7,7 +7,7 @@
 
 #define MAX_PROJECTILES 50
 
-static const float fireInterval = 0.5;
+static const float fireInterval = 0.3;
 
 typedef struct ProjectileManager {
     Projectile projectiles[MAX_PROJECTILES];

@@ -5,7 +5,7 @@
 
 static const int playerWidth = 16;
 static const int playerHeight = 16;
-static const int playerSpeed = 200;
+static const int playerSpeed = 100;
 
 typedef struct Player {
     Vector2 position;
