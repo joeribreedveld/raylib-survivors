@@ -32,12 +32,11 @@ void DrawProjectile(Projectile *projectile) {
         projectile->angle * RAD2DEG, RED);
 }
 
-void SetProjectile(Projectile *projectile, Vector2 position, float angle) {
+void SetProjectile(Projectile *projectile, Vector2 position,
+                   Vector2 direction) {
     projectile->active = true;
     projectile->position = position;
     projectile->lifetime = projectileLifetime;
 
-    projectile->velocity =
-        Vector2Scale(Vector2Rotate((Vector2){1, 0}, angle), projectileSpeed);
-    projectile->angle = angle;
+    projectile->velocity = Vector2Scale(direction, projectileSpeed);
 }

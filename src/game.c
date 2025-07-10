@@ -2,9 +2,6 @@
 
 #include <stdlib.h>
 
-#include "enemy_manager.h"
-#include "player.h"
-#include "projectile_manager.h"
 #include "utils.h"
 
 Game *InitGame() {
@@ -30,7 +27,8 @@ Game *InitGame() {
 void UpdateGame(Game *game) {
     UpdatePlayer(game->player);
 
-    UpdateProjectileManager(game->projectileManager, game->player);
+    UpdateProjectileManager(game->projectileManager, game->player,
+                            game->enemyManager);
 
     UpdateEnemyManager(game->enemyManager, game->player);
 

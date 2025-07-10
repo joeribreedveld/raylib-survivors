@@ -3,7 +3,7 @@
 
 #include "raylib.h"
 
-static const int projectileWidth = 16;
+static const int projectileWidth = 8;
 static const int projectileHeight = 8;
 static const int projectileSpeed = 400;
 static const int projectileLifetime = 3;
@@ -23,6 +23,6 @@ void UpdateProjectile(Projectile *projectile);
 
 void DrawProjectile(Projectile *projectile);
 
-void SetProjectile(Projectile *projectile, Vector2 position, float angle);
+void SetProjectile(Projectile *projectile, Vector2 position, Vector2 direction);
 
 #endif
