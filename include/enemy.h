@@ -9,7 +9,8 @@ static const int enemyHeight = 16;
 static const int enemySpeed = 50;
 static const int enemyHP = 3;
 
-typedef struct Enemy {
+typedef struct Enemy
+{
     Vector2 position;
     Vector2 velocity;
     Vector2 size;

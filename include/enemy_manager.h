@@ -10,7 +10,8 @@ static const int enemySpawnRadius = 400;
 
 struct Game;
 
-typedef struct EnemyManager {
+typedef struct EnemyManager
+{
     Enemy enemies[MAX_ENEMIES];
     float spawnTimer;
 } EnemyManager;

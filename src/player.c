@@ -4,7 +4,8 @@
 
 #include "raymath.h"
 
-Player *InitPlayer() {
+Player *InitPlayer()
+{
     Player *player = malloc(sizeof(Player));
 
     player->position = Vector2Zero();
@@ -16,15 +17,21 @@ Player *InitPlayer() {
     return player;
 }
 
-void UpdatePlayer(Player *player) {
+void UpdatePlayer(Player *player)
+{
     Vector2 direction = Vector2Zero();
 
-    if (IsKeyDown(KEY_W)) direction.y -= 1;
-    if (IsKeyDown(KEY_A)) direction.x -= 1;
-    if (IsKeyDown(KEY_S)) direction.y += 1;
-    if (IsKeyDown(KEY_D)) direction.x += 1;
+    if (IsKeyDown(KEY_W))
+        direction.y -= 1;
+    if (IsKeyDown(KEY_A))
+        direction.x -= 1;
+    if (IsKeyDown(KEY_S))
+        direction.y += 1;
+    if (IsKeyDown(KEY_D))
+        direction.x += 1;
 
-    if (direction.x != 0 && direction.y != 0) {
+    if (direction.x != 0 && direction.y != 0)
+    {
         direction = Vector2Normalize(direction);
     }
 
@@ -33,7 +40,8 @@ void UpdatePlayer(Player *player) {
                    Vector2Scale(direction, playerSpeed * GetFrameTime()));
 }
 
-void DrawPlayer(Player *player) {
+void DrawPlayer(Player *player)
+{
     Rectangle rectangle = {(int)player->position.x, (int)player->position.y,
                            player->size.x, player->size.y};
 
@@ -42,4 +50,7 @@ void DrawPlayer(Player *player) {
     DrawRectanglePro(rectangle, origin, 0.0f, BLUE);
 }
 
-void UnloadPlayer(Player *player) { free(player); }
+void UnloadPlayer(Player *player)
+{
+    free(player);
+}

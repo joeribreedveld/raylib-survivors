@@ -9,7 +9,8 @@ static const int playerWidth = 16;
 static const int playerHeight = 16;
 static const int playerSpeed = 150;
 
-typedef struct Player {
+typedef struct Player
+{
     Vector2 position;
     Vector2 velocity;
     Vector2 size;

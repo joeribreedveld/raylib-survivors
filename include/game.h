@@ -8,7 +8,8 @@
 
 static const float gameScale = 2.0f;
 
-typedef struct Game {
+typedef struct Game
+{
     Camera2D camera;
     Player *player;
     ProjectileManager *projectileManager;

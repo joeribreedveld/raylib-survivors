@@ -4,7 +4,8 @@
 
 #include "utils.h"
 
-Game *InitGame() {
+Game *InitGame()
+{
     Game *game = malloc(sizeof(Game));
 
     game->player = InitPlayer();
@@ -24,7 +25,8 @@ Game *InitGame() {
     return game;
 }
 
-void UpdateGame(Game *game) {
+void UpdateGame(Game *game)
+{
     UpdatePlayer(game->player);
 
     UpdateProjectileManager(game->projectileManager, game->player,
@@ -36,18 +38,23 @@ void UpdateGame(Game *game) {
         (Vector2){(int)game->player->position.x, (int)game->player->position.y};
 
     /* Collisions */
-    for (int i = 0; i < MAX_ENEMIES; i++) {
-        if (!game->enemyManager->enemies[i].active) continue;
+    for (int i = 0; i < MAX_ENEMIES; i++)
+    {
+        if (!game->enemyManager->enemies[i].active)
+            continue;
 
-        for (int j = 0; j < MAX_PROJECTILES; j++) {
-            if (!game->projectileManager->projectiles[j].active) continue;
+        for (int j = 0; j < MAX_PROJECTILES; j++)
+        {
+            if (!game->projectileManager->projectiles[j].active)
+                continue;
 
             if (CheckCollisionRecs(
                     RectangleFromCenter(game->enemyManager->enemies[i].position,
                                         game->enemyManager->enemies[i].size),
                     RectangleFromCenter(
                         game->projectileManager->projectiles[j].position,
-                        game->projectileManager->projectiles[j].size))) {
+                        game->projectileManager->projectiles[j].size)))
+            {
                 game->enemyManager->enemies[i].hp -= 1;
 
                 game->projectileManager->projectiles[j].piercing -= 1;
@@ -56,7 +63,8 @@ void UpdateGame(Game *game) {
     }
 }
 
-void DrawGame(Game *game) {
+void DrawGame(Game *game)
+{
     BeginDrawing();
 
     ClearBackground(BLACK);
@@ -76,7 +84,8 @@ void DrawGame(Game *game) {
     EndDrawing();
 }
 
-void UnloadGame(Game *game) {
+void UnloadGame(Game *game)
+{
     UnloadPlayer(game->player);
 
     UnloadProjectileManager(game->projectileManager);

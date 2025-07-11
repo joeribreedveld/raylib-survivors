@@ -1,24 +1,30 @@
 #include "game.h"
 #include "raylib.h"
 
-int main() {
+int main()
+{
     /* Init */
     const int screenWidth = 640;
     const int screenHeight = 480;
 
     InitWindow(screenWidth, screenHeight, "Survivors");
 
+    InitAudioDevice();
+
     SetTargetFPS(60);
 
     Game *game = InitGame();
 
-    while (!WindowShouldClose()) {
+    while (!WindowShouldClose())
+    {
         UpdateGame(game);
 
         DrawGame(game);
     }
 
     UnloadGame(game);
+
+    CloseAudioDevice();
 
     CloseWindow();
 

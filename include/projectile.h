@@ -11,7 +11,8 @@ static const int projectileSpeed = 750;
 static const int projectileLifetime = 3;
 static const int projectilePiercing = 2;
 
-typedef struct Projectile {
+typedef struct Projectile
+{
     Vector2 position;
     Vector2 velocity;
     Vector2 size;

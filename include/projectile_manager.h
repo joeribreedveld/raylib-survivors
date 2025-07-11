@@ -10,9 +10,11 @@
 static const float fireInterval = 0.2f;
 static const float projectileViewRadius = 300;
 
-typedef struct ProjectileManager {
+typedef struct ProjectileManager
+{
     Projectile projectiles[MAX_PROJECTILES];
     float fireTimer;
+    Sound fireSound;
 } ProjectileManager;
 
 ProjectileManager *InitProjectileManager();

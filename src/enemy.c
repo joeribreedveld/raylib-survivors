@@ -4,7 +4,8 @@
 
 #include "raymath.h"
 
-void InitEnemy(Enemy *enemy) {
+void InitEnemy(Enemy *enemy)
+{
     enemy->velocity = Vector2Zero();
     enemy->position = Vector2Zero();
     enemy->active = false;
@@ -12,7 +13,8 @@ void InitEnemy(Enemy *enemy) {
     enemy->size = (Vector2){enemyWidth, enemyHeight};
 }
 
-void UpdateEnemy(Enemy *enemy, Player *player) {
+void UpdateEnemy(Enemy *enemy, Player *player)
+{
     /* Get angle between player and enemy */
     Vector2 playerToEnemy = Vector2Subtract(player->position, enemy->position);
     Vector2 enemyDirection = Vector2Normalize(playerToEnemy);
@@ -25,7 +27,8 @@ void UpdateEnemy(Enemy *enemy, Player *player) {
                                  Vector2Scale(enemy->velocity, GetFrameTime()));
 }
 
-void DrawEnemy(Enemy *enemy) {
+void DrawEnemy(Enemy *enemy)
+{
     Rectangle rectangle = {enemy->position.x, enemy->position.y, enemy->size.x,
                            enemy->size.y};
 
@@ -34,7 +37,8 @@ void DrawEnemy(Enemy *enemy) {
     DrawRectanglePro(rectangle, origin, 0.0f, GREEN);
 }
 
-void SetEnemy(Enemy *enemy, Vector2 position) {
+void SetEnemy(Enemy *enemy, Vector2 position)
+{
     enemy->active = true;
     enemy->position = position;
     enemy->hp = enemyHP;

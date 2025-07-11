@@ -6,7 +6,8 @@
 #include "raymath.h"
 #include "utils.h"
 
-void InitProjectile(Projectile *projectile) {
+void InitProjectile(Projectile *projectile)
+{
     projectile->velocity = Vector2Zero();
     projectile->position = Vector2Zero();
     projectile->active = false;
@@ -15,19 +16,22 @@ void InitProjectile(Projectile *projectile) {
     projectile->piercing = projectilePiercing;
 }
 
-void UpdateProjectile(Projectile *projectile) {
+void UpdateProjectile(Projectile *projectile)
+{
     projectile->position =
         Vector2Add(projectile->position,
                    Vector2Scale(projectile->velocity, GetFrameTime()));
 
     projectile->lifetime -= GetFrameTime();
 
-    if (projectile->lifetime <= 0) {
+    if (projectile->lifetime <= 0)
+    {
         projectile->active = false;
     }
 }
 
-void DrawProjectile(Projectile *projectile, Game *game) {
+void DrawProjectile(Projectile *projectile, Game *game)
+{
     float rotation = projectile->angle * RAD2DEG + 90.0f;
 
     Rectangle rectangle = {projectile->position.x, projectile->position.y,
@@ -38,8 +42,8 @@ void DrawProjectile(Projectile *projectile, Game *game) {
     DrawRectanglePro(rectangle, origin, rotation, RED);
 }
 
-void SetProjectile(Projectile *projectile, Vector2 position,
-                   Vector2 direction) {
+void SetProjectile(Projectile *projectile, Vector2 position, Vector2 direction)
+{
     projectile->active = true;
     projectile->position = position;
     projectile->lifetime = projectileLifetime;
